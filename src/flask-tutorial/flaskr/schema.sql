@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS filme;
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE filme (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  titulo TEXT NOT NULL,
+  tipo TEXT NOT NULL,
+  genero  TEXT NOT NULL,
+  nota INTEGER NOT NULL,
+  comentario TEXT,
+  created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  author_id INTEGER NOT NULL, FOREIGN KEY (author_id) REFERENCS user (id)
+  );
+
